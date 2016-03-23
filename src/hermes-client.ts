@@ -3,6 +3,8 @@
  * @copyright Interactive Solutions
  */
 
+import {EventManager} from "interactivesolutions-ts-stdlib";
+
 export interface HermesClientOpts {
   hermesUri?:string;
 }
@@ -11,14 +13,16 @@ interface AuthenticationResult {
   success:boolean;
 }
 
-export class HermesClient extends is.stdlib.EventManager {
+export class HermesClient extends EventManager {
   private _connection:SocketIOClient.Socket;
 
   private connected:boolean = false;
   private authenticationInProgress:boolean = false;
   private authenticated:boolean = false;
 
-  constructor(private options:HermesClientOpts) {}
+  constructor(private options:HermesClientOpts) {
+    super();
+  }
 
   connect():void {
     var hermesUri = this.options.hermesUri ? this.options.hermesUri : 'localhost';
