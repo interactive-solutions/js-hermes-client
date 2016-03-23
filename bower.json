@@ -1,0 +1,12 @@
+{
+  "name": "js-hermes-client",
+  "version": "0.0.0",
+  "authors": [
+    "Erik Norgren <erik.norgren@interactivesolutions.se>"
+  ],
+  "dependencies": {
+    "lodash": "~4.6.1",
+    "socket.io-client": "~1.4.5",
+    "interactivesolutions/ts-stdlib": "ts-stdlib#~1.0.0"
+  }
+}
