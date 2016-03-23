@@ -24,6 +24,10 @@ export class HermesClient extends EventManager {
     super();
   }
 
+  get connection():SocketIOClient.Socket {
+    return this._connection;
+  }
+
   connect():void {
     var hermesUri = this.options.hermesUri ? this.options.hermesUri : 'localhost';
 
@@ -34,8 +38,8 @@ export class HermesClient extends EventManager {
     this._connection.on('user:authenticated', this.onAuthenticated.bind(this));
   }
 
-  get connection():SocketIOClient.Socket {
-    return this._connection;
+  disconnect():void {
+    this._connection.close();
   }
 
   /**
