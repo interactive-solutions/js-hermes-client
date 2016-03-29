@@ -55,6 +55,44 @@ export class HermesClient extends EventManager {
   }
 
   /**
+   * Subscribe to another socket event
+   *
+   * @param event
+   */
+  subscribe(event:string):void {
+    this._connection.on(event, this.onEvent.bind(this, event));
+  }
+
+  /**
+   * Unsubscribe from a socket event
+   *
+   * @param event
+   */
+  unsubscribe(event:string):void {
+    this._connection.removeListener(event);
+  }
+
+  /**
+   * Sends an event over socket
+   *
+   * @param event
+   * @param data
+   */
+  send(event:string, data:any):void {
+    this._connection.emit(event, data);
+  }
+
+  /**
+   * Callback for custom subscribed events
+   *
+   * @param event
+   * @param data
+   */
+  private onEvent(event:string, data:any):void {
+    this.emit(event, data);
+  }
+
+  /**
    * Called on connected to Hermes
    */
   private onConnected():void {
