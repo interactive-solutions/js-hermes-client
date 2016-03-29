@@ -7,10 +7,10 @@
     "removeComments": true,
     "moduleResolution": "node",
     "sourceMap": true,
-    "allowJs": true
+    "allowJs": false
   },
   "files": [
-    "src/**/*.ts",
+    "src/hermes-client.ts",
     "typings/main.d.ts"
   ]
 }
